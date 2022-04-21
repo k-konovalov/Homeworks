@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ru.konovalovk.dagger2">
+    package="ru.konovalovk.dagger2.lesson1">
 
     <application
         android:allowBackup="true"
