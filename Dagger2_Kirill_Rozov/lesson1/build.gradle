@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    // ToDo: 1) Add kotlin kapt
     id 'kotlin-kapt'
 }
 
@@ -25,9 +26,14 @@ android {
 }
 
 dependencies {
-
+    // Core
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+
+    // ToDo: 2) Add Dagger2 deps
+    // Dagger2
+    implementation 'com.google.dagger:dagger:2.40.5'
+    kapt 'com.google.dagger:dagger-compiler:2.40.5'
 }
