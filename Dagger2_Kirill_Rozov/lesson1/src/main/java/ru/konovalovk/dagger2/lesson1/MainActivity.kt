@@ -2,7 +2,6 @@ package ru.konovalovk.dagger2.lesson1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import ru.konovalovk.dagger2.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
