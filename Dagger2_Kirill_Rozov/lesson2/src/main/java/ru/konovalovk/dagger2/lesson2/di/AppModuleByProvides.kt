@@ -5,7 +5,7 @@ import dagger.Provides
 import ru.konovalovk.dagger2.lesson2.data.Computer
 
 @Module
-object AppModule {
+object AppModuleByProvides {
     @Provides
-    fun provideComputer() = Computer("Oh shit")
+    fun provideComputer() = Computer("I am computer")
 }
