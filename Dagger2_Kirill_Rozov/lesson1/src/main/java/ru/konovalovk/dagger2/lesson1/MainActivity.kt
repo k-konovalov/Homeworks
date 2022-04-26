@@ -1,7 +1,7 @@
 package ru.konovalovk.dagger2.lesson1
 
 import android.os.Bundle
-import android.os.PersistableBundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import ru.konovalovk.dagger2.lesson1.data.Computer
 import ru.konovalovk.dagger2.lesson1.di.appComponent
@@ -11,9 +11,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     // ToDo: 3.5) Inject object from DI graph
     @Inject lateinit var computer: Computer
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         // ToDo: 3.4) Inject AppComponent to Activity
         appComponent.inject(this)
+        findViewById<TextView>(R.id.tv_hello).text = computer.test
     }
 }

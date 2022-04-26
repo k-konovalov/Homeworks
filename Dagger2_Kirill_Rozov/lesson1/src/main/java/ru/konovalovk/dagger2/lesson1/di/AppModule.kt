@@ -9,5 +9,5 @@ import ru.konovalovk.dagger2.lesson1.data.Computer
 object AppModule {
     // ToDo: 3.2) Provides obj, that wants to be injected
     @Provides
-    fun provideComputer() = Computer("")
+    fun provideComputer() = Computer("Oh shit")
 }
