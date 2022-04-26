@@ -4,6 +4,7 @@ import dagger.Component
 import ru.konovalovk.dagger2.lesson2.MainActivity
 import ru.konovalovk.dagger2.lesson2.data.Computer
 import ru.konovalovk.dagger2.lesson2.data.Samsung
+import ru.konovalovk.dagger2.lesson2.interfaces.SmartPhone
 
 // ToDo: 1.4) Connect new module (Binds / Provides) and add new value
 @Component(
@@ -14,7 +15,7 @@ import ru.konovalovk.dagger2.lesson2.data.Samsung
 )
 interface AppComponent {
     val computer: Computer
-    val samsung: Samsung
+    val samsung: SmartPhone
 
     fun inject(mainActivity: MainActivity)
 }
