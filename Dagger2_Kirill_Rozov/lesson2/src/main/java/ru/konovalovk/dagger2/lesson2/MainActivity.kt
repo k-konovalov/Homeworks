@@ -4,18 +4,19 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import ru.konovalovk.dagger2.lesson2.data.Computer
 import ru.konovalovk.dagger2.lesson2.di.appComponent
 import ru.konovalovk.dagger2.lesson2.interfaces.SmartPhone
 import javax.inject.Inject
 import dagger.Lazy
-import ru.konovalovk.dagger2.lesson2.data.Store
+import ru.konovalovk.dagger2.lesson2.data.*
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
     // ToDo: 2.1) Inject into variable (Injects)
     @Inject lateinit var computer: Computer
     @Inject lateinit var smartPhone: SmartPhone
     @Inject lateinit var store: Lazy<Store>
+    // ToDo: 3.7) Inject Class Factory (Assisted Inject)
+    @Inject lateinit var anotherStoreFactory: AnotherStoreImpl.Factory
 
     init {
         Log.i(javaClass.simpleName, "I'm inited")
@@ -35,6 +36,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         // ToDo: 2.5) Uses inject with constructor (Injects)
         findViewById<TextView>(R.id.tv_hello).text = store.get().computer.text
         findViewById<TextView>(R.id.tv_hello_2).text = store.get().smartPhone.text
+
+        // ToDo: 3.8) Provide lost param to object and get impl with injected obj (Assisted Inject)
+        val anotherStoreImpl = anotherStoreFactory.get(Display("I'm assisted display"))
+        findViewById<TextView>(R.id.tv_hello).text = anotherStoreImpl.display.text
+        findViewById<TextView>(R.id.tv_hello_2).text = anotherStoreImpl.smartPhone.text
     }
 
     // ToDo: 2.3) Inject into method (Injects)
