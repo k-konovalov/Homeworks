@@ -15,7 +15,7 @@ import ru.konovalovk.dagger2.lesson2.interfaces.SmartPhone
 )
 interface AppComponent {
     val computer: Computer
-    val samsung: SmartPhone
+    val smartPhone: SmartPhone
 
     fun inject(mainActivity: MainActivity)
 }
