@@ -29,6 +29,21 @@ class AnotherStoreImpl @AssistedInject constructor(
     }
 }
 
+// ToDo: 4.1) Create new stores (Qualifier's)
+class DefaultStore(
+    override val computer: Computer,
+    override val smartPhone: SmartPhone
+) : Store
+
+class SmartPhoneStore @Inject constructor(
+    override val computer: Computer,
+    override val smartPhone: SmartPhone) : Store
+
+class ComputerStore @Inject constructor(
+    override val computer: Computer,
+    override val smartPhone: SmartPhone
+) : Store
+
 interface Store {
     val computer: Computer
     val smartPhone: SmartPhone
