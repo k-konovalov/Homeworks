@@ -17,7 +17,7 @@ interface AppModuleByBinds {
     // ToDo: 2.5) Bind store (Injects)
     // ToDo: 4.2) Add new stores to graph(Qualifier's)
     @Binds
-    fun bindDefaultStore(storeImpl: StoreImpl): Store
+    fun bindDefaultStore(storeImpl: DefaultStore): Store
 
     @Binds
     // ToDo: 4.3) Annotate with Named (Qualifier's)
