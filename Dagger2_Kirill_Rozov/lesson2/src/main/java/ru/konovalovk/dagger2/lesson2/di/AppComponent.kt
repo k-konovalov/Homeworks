@@ -3,12 +3,19 @@ package ru.konovalovk.dagger2.lesson2.di
 import dagger.Component
 import ru.konovalovk.dagger2.lesson2.MainActivity
 import ru.konovalovk.dagger2.lesson2.data.Computer
+import ru.konovalovk.dagger2.lesson2.data.Samsung
+import ru.konovalovk.dagger2.lesson2.interfaces.SmartPhone
 
-// ToDo: 2.1) Create @Component interface
-// ToDo: 2.3) Specify new module there
-@Component(modules = [AppModule::class])
+// ToDo: 1.4) Connect new module (Binds / Provides) and add new value
+@Component(
+    modules = [
+        AppModuleByProvides::class,
+        AppModuleByBinds::class
+    ]
+)
 interface AppComponent {
-    // ToDo: 2.4) Create val computer and fun, that inject component to activity
     val computer: Computer
+    val smartPhone: SmartPhone
+
     fun inject(mainActivity: MainActivity)
 }

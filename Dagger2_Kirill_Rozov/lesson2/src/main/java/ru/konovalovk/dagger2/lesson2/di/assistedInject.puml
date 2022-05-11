@@ -1,0 +1,26 @@
+@startuml
+class AnotherStoreImpl{
+    override val computer: Computer,
+    override val smartPhone: SmartPhone,
+    @Assisted("display") val display: Display,
+}
+
+class Factory {
+    fun get(@Assisted("display") display: Display): AnotherStoreImpl
+}
+
+interface AppComponent{
+    val computer: Computer,
+    val smartphone: Smartphone,
+}
+
+AnotherStoreImpl +-- Factory
+AnotherStoreImpl::computer .> AppComponent::computer
+AnotherStoreImpl::smartphone .> AppComponent::smartphone
+Factory::display <.. AnotherStoreImpl::display: Получаем из
+
+note top of AnotherStoreImpl: @AssistedInject constructor()
+note left of AnotherStoreImpl: 1. Первые две переменные\nберутся из графа DI\n2. Вторая предоставляется\nруками из Factory\n3. Происходит связывание по аннотации\n@Assisted по
+note bottom of Factory: Инжектим объект-фабрику и вызываем метод get(),\nпередавая недостающую переменную.\nОна возвращает объект родительского класса
+note left of Factory: @AssistedFactory
+@enduml
