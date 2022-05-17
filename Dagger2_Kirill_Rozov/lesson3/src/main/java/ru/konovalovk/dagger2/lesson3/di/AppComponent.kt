@@ -17,4 +17,10 @@ interface AppComponent {
     val smartPhone: SmartPhone
 
     fun inject(mainActivity: MainActivity)
+
+    // ToDo: 1.1) Create Builder with fun build
+    @Component.Builder
+    interface Builder{
+        fun build(): AppComponent
+    }
 }

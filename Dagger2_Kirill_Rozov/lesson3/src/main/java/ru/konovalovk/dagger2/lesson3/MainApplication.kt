@@ -9,6 +9,10 @@ class MainApplication: Application() {
 
     override fun onCreate() {
         super.onCreate()
+        // Codegen is the same as Builder
         appComponent = DaggerAppComponent.create()
+        // ToDo: 1.2) Create component with Builder
+        appComponent = DaggerAppComponent.builder()
+            .build()
     }
 }
