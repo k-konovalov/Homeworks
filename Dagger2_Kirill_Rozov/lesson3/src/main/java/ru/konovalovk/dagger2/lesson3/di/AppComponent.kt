@@ -20,7 +20,7 @@ interface AppComponent {
 
     // ToDo: 1.1) Create Builder with fun build
     @Component.Builder
-    interface Builder{
+    interface Builder {
         fun build(): AppComponent
     }
 }
