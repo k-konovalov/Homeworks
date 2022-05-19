@@ -7,7 +7,7 @@ import ru.konovalovk.dagger2.lesson3.interfaces.AppDeps
 import ru.konovalovk.dagger2.lesson3.interfaces.StoreDeps
 
 // ToDo: 3.4) Inherits from StoreDeps (1 way)
-class MainApplication: Application(), StoreDeps {
+class MainApplication : Application(), StoreDeps {
     lateinit var appComponent: AppComponent
     override val context: Context = this@MainApplication
 
@@ -28,8 +28,9 @@ class MainApplication: Application(), StoreDeps {
     }
 
     // ToDo: 3.5) inner class of DepsImpl (2 way)
-    inner class AppDepsImpl: AppDeps {
-        @DefaultQualifier override val context: Context = this@MainApplication
+    inner class AppDepsImpl : AppDeps {
+        @DefaultQualifier
+        override val context: Context = this@MainApplication
     }
 }
 

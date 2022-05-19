@@ -14,15 +14,25 @@ import javax.inject.Named
 import javax.inject.Provider
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
-    @Inject lateinit var computer: Computer
-    @Inject lateinit var smartPhone: SmartPhone
-    @Inject lateinit var store: Store
-    @Inject lateinit var lazyStore: Lazy<Store>
-    @Inject lateinit var providerStore: Provider<Store>
-    @Inject lateinit var anotherStoreFactory: AnotherStoreImpl.Factory
+    @Inject
+    lateinit var computer: Computer
+    @Inject
+    lateinit var smartPhone: SmartPhone
+    @Inject
+    lateinit var store: Store
+    @Inject
+    lateinit var lazyStore: Lazy<Store>
+    @Inject
+    lateinit var providerStore: Provider<Store>
+    @Inject
+    lateinit var anotherStoreFactory: AnotherStoreImpl.Factory
 
-    @Inject @Named("COMPUTER_STORE") lateinit var computerStore: Store
-    @Inject @SmartPhoneStoreQualifier lateinit var smartphoneStore: Store
+    @Inject
+    @Named("COMPUTER_STORE")
+    lateinit var computerStore: Store
+    @Inject
+    @SmartPhoneStoreQualifier
+    lateinit var smartphoneStore: Store
 
     private var msg1 = ""
         set(value) {
@@ -40,10 +50,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         appComponent.inject(this)
-        
+
         msg1 += appComponent.computer.text
         msg2 += appComponent.smartPhone.text
-        
+
         msg1 += computer.text
         msg2 += smartPhone.text
 
@@ -67,7 +77,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     @Inject
-    fun init(notComputer: Computer){
+    fun init(notComputer: Computer) {
         Log.i(javaClass.simpleName, "I'm injected with ${notComputer.text}")
     }
 }
