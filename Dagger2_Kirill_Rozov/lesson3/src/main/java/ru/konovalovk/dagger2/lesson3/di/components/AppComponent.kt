@@ -1,14 +1,18 @@
-package ru.konovalovk.dagger2.lesson3.di
+package ru.konovalovk.dagger2.lesson3.di.components
 
 import android.content.Context
 import dagger.BindsInstance
 import dagger.Component
-import ru.konovalovk.dagger2.lesson3.MainActivity
+import ru.konovalovk.dagger2.lesson3.ui.MainActivity
 import ru.konovalovk.dagger2.lesson3.data.Computer
-import ru.konovalovk.dagger2.lesson3.interfaces.AppDeps
+import ru.konovalovk.dagger2.lesson3.di.deps.AppDeps
 import ru.konovalovk.dagger2.lesson3.interfaces.SmartPhone
-import ru.konovalovk.dagger2.lesson3.interfaces.StoreDeps
+import ru.konovalovk.dagger2.lesson3.di.deps.StoreDeps
+import ru.konovalovk.dagger2.lesson3.di.modules.*
+import javax.inject.Singleton
 
+// ToDo: 4.1) Make AppComponent Sigleton
+@Singleton
 @Component(
     modules = [
         AppModuleByProvides::class,
@@ -18,7 +22,7 @@ import ru.konovalovk.dagger2.lesson3.interfaces.StoreDeps
     // ToDo: 3.2) Add it as dependencies
     dependencies = [
         AppDeps::class,
-        StoreDeps::class
+        StoreDeps::class,
     ]
 )
 interface AppComponent {

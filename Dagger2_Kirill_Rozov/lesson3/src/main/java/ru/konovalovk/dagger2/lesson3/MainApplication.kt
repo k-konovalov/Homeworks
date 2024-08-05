@@ -3,8 +3,11 @@ package ru.konovalovk.dagger2.lesson3
 import android.app.Application
 import android.content.Context
 import ru.konovalovk.dagger2.lesson3.di.*
-import ru.konovalovk.dagger2.lesson3.interfaces.AppDeps
-import ru.konovalovk.dagger2.lesson3.interfaces.StoreDeps
+import ru.konovalovk.dagger2.lesson3.di.components.AppComponent
+import ru.konovalovk.dagger2.lesson3.di.components.DaggerAppComponent
+import ru.konovalovk.dagger2.lesson3.di.modules.AppModuleByProvides
+import ru.konovalovk.dagger2.lesson3.di.deps.AppDeps
+import ru.konovalovk.dagger2.lesson3.di.deps.StoreDeps
 
 // ToDo: 3.4) Inherits from StoreDeps (1 way)
 class MainApplication : Application(), StoreDeps {

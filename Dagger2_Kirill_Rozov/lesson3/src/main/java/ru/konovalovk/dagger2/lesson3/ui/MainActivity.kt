@@ -1,13 +1,18 @@
-package ru.konovalovk.dagger2.lesson3
+package ru.konovalovk.dagger2.lesson3.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.FrameLayout
+import android.widget.Switch
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
 import ru.konovalovk.dagger2.lesson3.di.appComponent
 import ru.konovalovk.dagger2.lesson3.interfaces.SmartPhone
 import javax.inject.Inject
 import dagger.Lazy
+import ru.konovalovk.dagger2.lesson3.R
 import ru.konovalovk.dagger2.lesson3.data.*
 import ru.konovalovk.dagger2.lesson3.di.SmartPhoneStoreQualifier
 import javax.inject.Named
@@ -33,6 +38,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     @Inject
     @SmartPhoneStoreQualifier
     lateinit var smartphoneStore: Store
+
+    var firstFragment: FirstFragment? = FirstFragment()
+    var secondFragment: SecondFragment? = SecondFragment()
 
     private var msg1 = ""
         set(value) {
@@ -74,6 +82,41 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         findViewById<TextView>(R.id.tv_hello).text = msg1
         findViewById<TextView>(R.id.tv_hello_2).text = msg2
+
+        //initFragments()
+        initButtons()
+    }
+
+    private fun initFragments() {
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fl_fragmentHolder_1, FirstFragment())
+            .add(R.id.fl_fragmentHolder_2, SecondFragment())
+            .commit()
+    }
+
+    private fun initButtons() {
+        findViewById<SwitchCompat>(R.id.btn_reinit_1).setOnCheckedChangeListener { compoundButton, b ->
+            supportFragmentManager.beginTransaction()
+                .apply {
+                    if (!b) remove(firstFragment!!)
+                    else replace(
+                        R.id.fl_fragmentHolder_1,
+                        FirstFragment().also { firstFragment = it }
+                    )
+                }
+                .commit()
+        }
+        findViewById<SwitchCompat>(R.id.btn_reinit_2).setOnCheckedChangeListener { compoundButton, b ->
+            supportFragmentManager.beginTransaction()
+                .apply {
+                    if (!b) remove(secondFragment!!)
+                    else replace(
+                        R.id.fl_fragmentHolder_2,
+                        SecondFragment().also { secondFragment = it }
+                    )
+                }
+                .commit()
+        }
     }
 
     @Inject

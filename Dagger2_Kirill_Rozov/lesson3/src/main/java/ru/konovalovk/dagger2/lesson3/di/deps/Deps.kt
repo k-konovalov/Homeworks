@@ -1,4 +1,4 @@
-package ru.konovalovk.dagger2.lesson3.interfaces
+package ru.konovalovk.dagger2.lesson3.di.deps
 
 import android.content.Context
 
