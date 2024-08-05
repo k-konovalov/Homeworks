@@ -6,18 +6,11 @@ import dagger.assisted.AssistedInject
 import ru.konovalovk.dagger2.lesson3.interfaces.SmartPhone
 import javax.inject.Inject
 
-class DefaultStore @Inject constructor(
-    override val computer: Computer,
-    override val smartPhone: SmartPhone
-) : Store
-
 class AnotherStoreImpl @AssistedInject constructor(
-    
     @Assisted("display") val display: Display,
     override val computer: Computer,
     override val smartPhone: SmartPhone,
-): Store {
-
+) : Store {
     @AssistedFactory
     interface Factory {
         fun get(@Assisted("display") display: Display): AnotherStoreImpl
@@ -26,9 +19,15 @@ class AnotherStoreImpl @AssistedInject constructor(
 
 class SmartPhoneStore @Inject constructor(
     override val computer: Computer,
-    override val smartPhone: SmartPhone) : Store
+    override val smartPhone: SmartPhone
+) : Store
 
 class ComputerStore @Inject constructor(
+    override val computer: Computer,
+    override val smartPhone: SmartPhone
+) : Store
+
+class DefaultStore @Inject constructor(
     override val computer: Computer,
     override val smartPhone: SmartPhone
 ) : Store
