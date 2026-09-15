@@ -1,0 +1,2 @@
+# ITMO: GO (base)
+You will get acquainted with the Go language: from the basics of syntax to multithreaded programming. You will study data types, working with functions and interfaces. You will learn how to interact with databases in Go and use the language’s main packages to create efficient services.
